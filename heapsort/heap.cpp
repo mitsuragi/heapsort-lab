@@ -6,92 +6,93 @@ template heap<double>;
 
 template<typename T>
 T heap<T>::getMax() const {
-	if (!isEmpty()) return data[1];
-	else return 0;
+	if (!isEmpty()) return data[1]; // так как это реализация maxHeap, 								 
+	else return 0;					// то соответственно самый большой элемент будет самым первым
 }
 
 template<typename T>
 void heap<T>::shiftUp(size_t i) {
-	if (i > size) {
+	if (i > size) { // Если индекс больше размера кучи, то происходит возврат, так как обратиться по этому индексу невозможно
 		return;
 	}
-	if (i == 1) {
+	if (i == 1) { // Если индекс равен 1, то значит, что это самый большой элемент и он стоит на своем месте
 		return;
 	}
-	if (data[i] > data[p(i)]) {
-		std::swap(data[p(i)], data[i]);
+	if (data[i] > data[p(i)]) {			// Если элемент по индексу больше родительского элемента
+		std::swap(data[p(i)], data[i]); // то они меняются местами, иначе происходит возврат, ведь элемент стоит на своем месте
+	} 
+	else {
+		return;
 	}
-	shiftUp(p(i));
+	shiftUp(p(i)); // Функция вызывается снова, для продолжения "просеивания"
 }
 
 template<typename T>
 void heap<T>::insert(T value) {
-	if (size + 1 >= data.size()) {
+	/*if (size + 1 >= data.size()) {
 		data.push_back(0);
-	}
-	data[++size] = value;
-	shiftUp(size);
+	}*/
+	data.push_back(0); // Добавляем значение, чтобы потом на это место поставить элемент
+	data[++size] = value; // Подставляем элемент на последнюю позицию, и сразу увеличиваем размер кучи на 1
+	shiftUp(size); // Ставим на нужное место элемент с индексом size, то есть только что добавленный
 	return;
 }
 
 template<typename T>
 void heap<T>::shiftDown(size_t i) {
-	if (i > size) {
+	if (i > size) { // Если индекс больше размера кучи, то происходит возврат, так как обратиться по этому индексу невозможно
 		return;
 	}
-	size_t swapId = i;
-	if (l(i) <= size && data[i] < data[l(i)]) {
-		swapId = l(i);
+
+	size_t swapId = i; 
+
+	if (l(i) <= size && data[i] < data[l(i)]) { // Проверяем, существует ли левый дочерний элемент у i-го элемента
+		swapId = l(i);							// и если он есть, то проверяем, меньше ли он родительского
+	}											// если все верно, то сохраняем индекс дочернего элемента в swapId
+
+	if (r(i) <= size && data[swapId] < data[r(i)]) { // Проверяем, существует ли правый дочерний элемент у i-го элемента
+		swapId = r(i);								 // и если он есть, то проверяем, меньше ли он родительского
+	}												 // если все верно, то сохраняем индекс дочернего элемента в swapId
+
+	if (swapId != i) {					  // Если swapId, не равен изначальному индексу
+		std::swap(data[i], data[swapId]); // то меняем местами начальный элемент с элементом по индексу swapId
+		shiftDown(swapId);				  // и продолжаем "просеивать" этот элемент дальше
 	}
-	if (r(i) <= size && data[swapId] < data[r(i)]) {
-		swapId = r(i);
-	}
-	if (swapId != i) {
-		std::swap(data[i], data[swapId]);
-		shiftDown(swapId);
-	}
+
 	return;
 }
 
 template<typename T>
-void heap<T>::heapify() {
-	for (size_t i = size; i != 0; i--) {
-		shiftUp(i);
-	}
-}
-
-template<typename T>
-T heap<T>::extractMax() {
-	T maxNum = data[1];
-	std::swap(data[1], data[size--]);
-	shiftDown(1);
+T heap<T>::popMax() {
+	T maxNum = data[1]; // Записываем самое большое значение, чтобы вернуть его потом
+	std::swap(data[1], data[size--]); // Меняем местами самое большое и самое маленькое значения и уменьшаем размер на 1
+	data.pop_back(); // Удаляем последнее значение из массива
+	shiftDown(1); // "Просеиваем" кучу, чтобы ее восстановить
 	return maxNum;
 }
 
 template<typename T>
 void heap<T>::makeHeap(T array[], size_t n) {
 	for (int i = 0; i < n; i++) {
-		insert(array[i]);
+		insert(array[i]); // Вставляем все значения из массива в кучу
 	}
 }
 
 template<typename T>
 void heap<T>::makeHeap(std::vector<T> vec) {
 	for (int i = 0; i < vec.size(); i++) {
-		insert(vec[i]);
+		insert(vec[i]); // Вствавляем все значения из вектора в кучу
 	}
 }
 
 template<typename T>
 std::vector<T> heap<T>::heapSort() {
-	if (isEmpty()) return std::vector<T>();
+	if (isEmpty()) return std::vector<T>(); // Проверяем кучу на пустоту
 
 	std::vector<T> sorted;
-	size_t size_ = size;
-	for (int i = 0; i < size_; i++) {
-		sorted.push_back(extractMax());
+	size_t size_ = size;				// Создаем переменную для хранения размера
+	for (int i = 0; i < size_; i++) {	// так как обычный размер будет уменьшаться и мы не пройдем всю кучу
+		sorted.push_back(popMax()); // Добавляем максимальный элемент в массив
 	}
-	size = size_;
-	heapify();
-	return sorted;
+	return sorted; // Возвращаем отсортированный массив
 }
