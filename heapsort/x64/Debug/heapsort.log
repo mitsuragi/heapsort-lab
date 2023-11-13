@@ -1,8 +1,4 @@
-﻿  ForFile.cpp
-  heap.cpp
+﻿  heap.cpp
   heapsort.cpp
-  Input.cpp
-  Interface.cpp
-  Tests.cpp
-  Создание кода...
-  heapsort.vcxproj -> C:\Users\User\Documents\Учёба Ивана\РПС\heapsort\heapsort-lab-master\x64\Debug\heapsort.exe
+  Generating Code...
+  heapsort.vcxproj -> C:\Users\12\source\repos\heapsort\x64\Debug\heapsort.exe
