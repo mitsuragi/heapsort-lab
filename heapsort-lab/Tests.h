@@ -7,8 +7,6 @@ public:
 	bool runTestOne();
 	bool runTestTwo();
 	bool runTestThree();
-	bool runTestFour();
-	bool runTestFifth();
 
 	void runTests();
 };
