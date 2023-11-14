@@ -1,15 +1,15 @@
-#pragma once
+#pragma once // Директива препроцессора для обеспечения однократного включения заголовочного файла
 
-#include <fstream>
-#include <string>
-#include <vector>
-#include <memory>
-#include <iostream>
-#include <filesystem>
+#include <fstream> // Включение заголовочного файла для работы с файлами
+#include <string> // Включение заголовочного файла для работы со строками
+#include <vector> // Включение заголовочного файла для работы с векторами
+#include <memory> // Включение заголовочного файла для работы с умными указателями
+#include <iostream> // Включение заголовочного файла для работы с потоками ввода-вывода
+#include <filesystem> // Включение заголовочного файла для работы с файловой системой
 
-using namespace std;
+using namespace std; // Использование стандартного пространства имен
 
-vector<double> uploadFromFile(string fileName);
-void saveArray(vector<double>& Array, string fileName);
-bool getFilePath(string fileName);
-vector<double> getRandomArray(int size);
+vector<double> uploadFromFile(string fileName); // Объявление функции для загрузки данных из файла
+void saveArray(vector<double>& Array, string fileName); // Объявление функции для сохранения массива в файл
+bool getFilePath(string fileName); // Объявление функции для получения пути файла
+vector<double> getRandomArray(int size); // Объявление функции для создания случайного массива

@@ -1,5 +1,7 @@
-﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (heapsort.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: промежуточный каталог (x64\Debug\) содержит файлы, которые используются совместно с другим проектом (heapsort.vcxproj).  Это может привести к ошибкам очистки и перестроения.
+  ForFile.cpp
+  Input.cpp
   Tests.cpp
   heapsort.cpp
-  Generating Code...
-  heapsort-lab.vcxproj -> C:\Users\12\source\repos\heapsort-lab\x64\Debug\heapsort-lab.exe
+  Создание кода...
+  heapsort-lab.vcxproj -> C:\Users\User\Documents\Учёба Ивана\РПС\heapsort\heapsort-lab-master\x64\Debug\heapsort-lab.exe
