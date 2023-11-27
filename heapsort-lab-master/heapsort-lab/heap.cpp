@@ -5,9 +5,23 @@ template heap<float>;
 template heap<double>;
 
 template<typename T>
+bool heap<T>::isEmpty() const {
+	return size == 0;
+}
+
+template<typename T>
+size_t heap<T>::getSize() const {
+	return size;
+}
+
+template<typename T>
 T heap<T>::getMax() const {
-	if (!isEmpty()) return data[1]; // так как это реализация maxHeap, 								 
-	else return 0;					// то соответственно самый большой элемент будет самым первым
+	if (!isEmpty()) {
+		return data[1];				// так как это реализация maxHeap, 
+	}								// то соответственно самый большой элемент будет самым первым	 
+	else {
+		return 0;
+	}
 }
 
 template<typename T>
@@ -20,14 +34,14 @@ void heap<T>::shiftUp(size_t i) {
 		return;
 	}
 
-	if (data[i] > data[p(i)]) {			// Если элемент по индексу больше родительского элемента
-		swap(data[p(i)], data[i]); // то они меняются местами, иначе происходит возврат, ведь элемент стоит на своем месте
+	if (data[i] > data[parent(i)]) {			// Если элемент по индексу больше родительского элемента
+		swap(data[parent(i)], data[i]); // то они меняются местами, иначе происходит возврат, ведь элемент стоит на своем месте
 	} 
 	else {
 		return;
 	}
 
-	shiftUp(p(i)); // Функция вызывается снова, для продолжения "просеивания"
+	shiftUp(parent(i)); // Функция вызывается снова, для продолжения "просеивания"
 }
 
 template<typename T>
@@ -46,12 +60,12 @@ void heap<T>::shiftDown(size_t i) {
 
 	size_t swapId = i; 
 
-	if (l(i) <= size && data[i] < data[l(i)]) { // Проверяем, существует ли левый дочерний элемент у i-го элемента
-		swapId = l(i);							// и если он есть, то проверяем, меньше ли он родительского
+	if (leftChild(i) <= size && data[i] < data[leftChild(i)]) { // Проверяем, существует ли левый дочерний элемент у i-го элемента
+		swapId = leftChild(i);							// и если он есть, то проверяем, меньше ли он родительского
 	}											// если все верно, то сохраняем индекс дочернего элемента в swapId
 
-	if (r(i) <= size && data[swapId] < data[r(i)]) { // Проверяем, существует ли правый дочерний элемент у i-го элемента
-		swapId = r(i);								 // и если он есть, то проверяем, меньше ли он родительского
+	if (rightChild(i) <= size && data[swapId] < data[rightChild(i)]) { // Проверяем, существует ли правый дочерний элемент у i-го элемента
+		swapId = rightChild(i);								 // и если он есть, то проверяем, меньше ли он родительского
 	}												 // если все верно, то сохраняем индекс дочернего элемента в swapId
 
 	if (swapId != i) {					  // Если swapId, не равен изначальному индексу

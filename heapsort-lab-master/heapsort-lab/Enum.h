@@ -8,4 +8,4 @@ enum MENU_ITEM { ADD = 1, SORT, SAVE, QUIT };
 /// <summary>
 /// Константы второго меню программы
 /// </summary>
-enum SECOND_MENU_ITEM { FROM_FILE = 1, RANDOM, BACK };
+enum SECOND_MENU_ITEM { FROM_FILE = 1, RANDOM, BACK }; // название на замену

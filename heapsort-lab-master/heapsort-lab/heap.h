@@ -7,12 +7,35 @@ template<typename T>
 class heap {
 	vector<T> data = { -1 };
 	size_t size{};
-	size_t p(size_t i) { return i >> 1; }; // Ищет родителя выбранного дочернего элемента
-	size_t l(size_t i) { return i << 1; }; // Ищет левый дочерний элемент выбранного родительского элемента
-	size_t r(size_t i) { return (i << 1) + 1; }; // Ищет правый дочерний элемент выбранного родительского элемента
+	/// <summary>
+	/// Ищет родителя выбранного дочернего элемента
+	/// </summary>
+	/// <param name="i">индекс дочернего элемента</param>
+	/// <returns>индекс родительского элемента</returns>
+	size_t parent(size_t i) { return i >> 1; };
+	/// <summary>
+	/// Ищет левый дочерний элемент выбранного родительского элемента
+	/// </summary>
+	/// <param name="i">индекс родительского элемента</param>
+	/// <returns></returns>
+	size_t leftChild(size_t i) { return i << 1; };
+	/// <summary>
+	/// Ищет правый дочерний элемент выбранного родительского элемента
+	/// </summary>
+	/// <param name="i"></param>
+	/// <returns>индекс родительского элемента</returns>
+	size_t rightChild(size_t i) { return (i << 1) + 1; };
 public:
-	bool isEmpty() const { return size == 0; }; // Проверка на пустоту кучи
-	size_t getSize() const { return size; }; // Возвращает размер кучи
+	/// <summary>
+	/// Проверка на пустоту кучи
+	/// </summary>
+	/// <returns>true если пуста, false, если нет</returns>
+	bool isEmpty() const;
+	/// <summary>
+	/// 
+	/// </summary>
+	/// <returns>Возвращает размер кучи</returns>
+	size_t getSize() const;
 	/// <summary>
 	/// Возвращает самый большой элемент в куче
 	/// </summary>
