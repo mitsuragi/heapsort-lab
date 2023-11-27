@@ -15,7 +15,7 @@ void showMenu() {
 		<< "4 - Выход" << endl;
 }
 
-void showSecondMenu() {
+void showMenuForAddArray() {
 	cout << endl << "Список вариантов программы:" << endl
 		<< "1 - Считать массив из файла" << endl
 		<< "2 - Заполнить массив случайными числами" << endl

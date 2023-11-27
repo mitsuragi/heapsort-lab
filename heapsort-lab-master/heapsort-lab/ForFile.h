@@ -28,7 +28,7 @@ void saveArray(vector<double>& array, string fileName); // Объявление функции дл
 /// </summary>
 /// <param name="fileName">Имя файла</param>
 /// <returns>Возращает полный путь файла</returns>
-bool getFilePath(string fileName); // Объявление функции для получения пути файла
+bool checkFilePath(string fileName); // Объявление функции для получения пути файла
 
 /// <summary>
 /// Функция для м=получения массив, состоящего из случайных значений

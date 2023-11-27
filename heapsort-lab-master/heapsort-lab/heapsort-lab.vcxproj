@@ -129,8 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ForFile.cpp" />
-    <ClCompile Include="heap.cpp" />
-    <ClCompile Include="heapsort.cpp" />
+    <ClCompile Include="Heap.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Interface.cpp" />
     <ClCompile Include="Tests.cpp" />
@@ -138,7 +138,7 @@
   <ItemGroup>
     <ClInclude Include="Enum.h" />
     <ClInclude Include="ForFile.h" />
-    <ClInclude Include="heap.h" />
+    <ClInclude Include="Heap.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Interface.h" />
     <ClInclude Include="Tests.h" />
